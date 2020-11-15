@@ -1,6 +1,6 @@
 package com.nbondarchuk.oauth2.server.endpoint.exception;
 
-import com.nbondarchuk.oauth2.server.model.dto.ErrorDto;
+import com.nbondarchuk.oauth2.server.model.error.Error;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
@@ -15,6 +15,6 @@ public class UncaughtExceptionMapper implements ExceptionMapper<Throwable> {
 
     @Override
     public Response toResponse(Throwable t) {
-        return Response.serverError().entity(ErrorDto.of(t)).type(APPLICATION_JSON_TYPE).build();
+        return Response.serverError().entity(Error.of(t)).type(APPLICATION_JSON_TYPE).build();
     }
 }

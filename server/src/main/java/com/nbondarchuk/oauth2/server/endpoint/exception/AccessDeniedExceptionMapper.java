@@ -1,6 +1,6 @@
 package com.nbondarchuk.oauth2.server.endpoint.exception;
 
-import com.nbondarchuk.oauth2.server.model.dto.ErrorDto;
+import com.nbondarchuk.oauth2.server.model.error.Error;
 import org.springframework.security.access.AccessDeniedException;
 
 import javax.ws.rs.core.Response;
@@ -16,6 +16,6 @@ public class AccessDeniedExceptionMapper implements ExceptionMapper<AccessDenied
 
     @Override
     public Response toResponse(AccessDeniedException e) {
-        return Response.status(FORBIDDEN).entity(ErrorDto.of(e)).build();
+        return Response.status(FORBIDDEN).entity(Error.of(e)).build();
     }
 }
