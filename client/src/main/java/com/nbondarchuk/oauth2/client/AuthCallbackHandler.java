@@ -40,7 +40,7 @@ public class AuthCallbackHandler extends NanoHTTPD {
         lock.lock();
         try {
             while (tokens == null) {
-                if (!tokenSet.await(1, MINUTES)) {
+                if (!tokenSet.await(5, MINUTES)) {
                     throw new AuthenticationException("Token wasn't received in 1 minute.");
                 }
             }
