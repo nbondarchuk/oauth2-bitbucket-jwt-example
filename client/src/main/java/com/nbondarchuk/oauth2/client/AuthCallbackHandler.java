@@ -26,7 +26,7 @@ public class AuthCallbackHandler extends NanoHTTPD {
 
     private final Lock lock = new ReentrantLock();
 
-    private final Condition tokenSet = lock.newCondition();
+    private final Condition tokensSet = lock.newCondition();
 
     public AuthCallbackHandler(int port) {
         super(port);
@@ -40,7 +40,7 @@ public class AuthCallbackHandler extends NanoHTTPD {
         lock.lock();
         try {
             while (tokens == null) {
-                if (!tokenSet.await(5, MINUTES)) {
+                if (!tokensSet.await(5, MINUTES)) {
                     throw new AuthenticationException("Token wasn't received in 1 minute.");
                 }
             }
@@ -71,7 +71,7 @@ public class AuthCallbackHandler extends NanoHTTPD {
                 lock.lock();
                 try {
                     this.tokens = Tokens.of(accessToken, refreshToken);
-                    tokenSet.signal();
+                    tokensSet.signal();
                 } finally {
                     lock.unlock();
                 }

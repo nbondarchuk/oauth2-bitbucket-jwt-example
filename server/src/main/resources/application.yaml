@@ -1,0 +1,28 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          bitbucket:
+            client-id: xxxxxxxxxxxxxxx
+            client-secret: yyyyyyyyyyyyyyy
+            client-authentication-method: basic
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+        provider:
+          bitbucket:
+            user-name-attribute: username
+            user-info-uri: https://api.bitbucket.org/2.0/user
+            token-uri: https://bitbucket.org/site/oauth2/access_token
+            authorization-uri: https://bitbucket.org/site/oauth2/authorize
+
+token:
+  # 10 minutes
+  access_token_validity_millis: 600000
+  # 10 days
+  refresh_token_validity_millis: 864000000
+  # token secret
+  secret: 926D96C90030DD58429D2751AC1BDBBC
+
+auth:
+  authorized_redirect_uris: http://localhost:8081/oauth2/redirect
