@@ -1,0 +1,7 @@
+!/.idea/
+/.idea/*
+!/.idea/runConfigurations/
+
+/**/*.iml
+/**/target/
+/.DS_Store
