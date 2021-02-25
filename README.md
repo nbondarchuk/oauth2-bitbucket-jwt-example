@@ -9,3 +9,6 @@ __How to test.__
 * Run client/src/main/java/com/nbondarchuk/oauth2/client/OAuth2JwtExampleClient.java.
 * Open http://localhost:8080/auth/login?redirect_uri=http://localhost:8081/oauth2/redirect in browser and authenticate.
 * Check clinet console for output.
+
+
+> Please give me a star if you find this example useful.
